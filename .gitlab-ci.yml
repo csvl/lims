@@ -41,4 +41,4 @@ reuse:
     name: fsfe/reuse:latest
     entrypoint: [""]
   script:
-    - reuse lint
+    - reuse --include-submodules lint

@@ -7,3 +7,7 @@ License: GPL-3.0-or-later
 Files: .gitmodules
 Copyright: 2024 Gerald Wiese <wiese@gnuhealth.org>
 License: GPL-3.0-or-later
+
+Files: gnuhealth/VERSION
+Copyright: 2024 Gerald Wiese <wiese@gnuhealth.org>
+License: GPL-3.0-or-later
