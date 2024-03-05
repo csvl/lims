@@ -5,6 +5,8 @@
 
 test:
   image: docker:25.0.3
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
   services:
     - docker:25.0.3-dind
   variables:
