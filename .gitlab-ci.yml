@@ -30,6 +30,7 @@ test:
         EOF
       - pwd
       - ls
+      - ls gnuhealth/
   script:
       - docker compose up -d --build
       - docker ps
@@ -40,5 +41,7 @@ reuse:
   image:
     name: fsfe/reuse:latest
     entrypoint: [""]
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
   script:
     - reuse --include-submodules lint
