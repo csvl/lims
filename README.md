@@ -5,7 +5,7 @@ SPDX-FileCopyrightText: 2024 Leibniz University Hannover
 SPDX-License-Identifier: GPL-3.0-or-later
 -->
 
-# What is GNUHealth
+# What is GNU Health
 
 
 The GNU Health project provides the tools for individuals, health professionals, institutions and governments to proactively assess and improve the underlying determinants of health, from the socioeconomic agents to the molecular basis of disease. From primary health care to precision medicine. The following are the main components that make up the GNU Health ecosystem:
@@ -27,7 +27,7 @@ More details on https://www.gnuhealth.org/
 You can use this repository to set up a local GNU Health server using Docker Compose. Therefor follow the following instructions:
 - [Install Docker](https://docs.docker.com/engine/install/)
 - Run docker compose up -d --build
-- Install & run GNU Health client using [Ansible](https://docs.gnuhealth.org/ansible/examples/gnuhealth_client.html) or [Vanilla](https://docs.gnuhealth.org/hmis/techguide/installation/vanilla.html#installation-of-the-gnu-health-client) installation
+- Install & run GNU Health client using [Ansible](https://docs.gnuhealth.org/ansible/examples/gnuhealth_client.html) or [Vanilla](https://docs.gnuhealth.org/his/techguide/installation/vanilla.html#installation-of-the-gnu-health-client) installation
 - Connect to localhost:8080, use 'health' for empty database and 'ghdemo44' for demo database. Username is 'admin' and password 'gnusolidario'.
 - Run 'python3 test.py' for non interactive connection test
 
