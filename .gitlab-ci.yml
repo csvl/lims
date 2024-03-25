@@ -7,7 +7,6 @@ stages:
   - test
   - release
 
-
 test:
   stage: test
   image: docker:25.0.3
@@ -64,10 +63,8 @@ release:
   script:
     - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $CI_USER_TOKEN
     - RELEASE_VERSION=$(cat gnuhealth/VERSION)
-    - echo $RELEASE_VERSION
     - docker build -t ${CI_REGISTRY_IMAGE}:${RELEASE_VERSION} ./gnuhealth/
-    - echo "docker push ${CI_REGISTRY_IMAGE}:${RELEASE_VERSION}"
-    #- docker push ${CI_REGISTRY_IMAGE}:${RELEASE_VERSION}
-  #only:
-    #- main
+    - docker push ${CI_REGISTRY_IMAGE}:${RELEASE_VERSION}
+  only:
+    - main
 
