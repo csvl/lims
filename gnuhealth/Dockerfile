@@ -3,7 +3,8 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-FROM python:3.11.8-bookworm
+#FROM python:3.11.8-bookworm
+FROM python:3.11.9
 
 RUN apt-get update && apt-get install -y postgresql-client wget && \
   cd /tmp/ && wget https://www.gnuhealth.org/downloads/postgres_dumps/gnuhealth-44-demo.sql.gz && \
@@ -12,6 +13,8 @@ RUN apt-get update && apt-get install -y postgresql-client wget && \
 RUN apt-get install -y expect graphviz libreoffice-writer-nogui libreoffice-calc-nogui && \
   pip3 install uwsgi && \
   pip3 install gnuhealth-all-modules
+
+COPY mosquito_registration /usr/local/lib/python3.11/site-packages/trytond/modules/mosquito_registration 
 
 RUN mkdir -p /opt/gnuhealth/etc /opt/gnuhealth/var/log /opt/gnuhealth/var/lib && \
   cp `pip3 show uwsgi | grep "Location" | cut -b 10-`/gnuhealth-all-modules/etc/trytond.conf /opt/gnuhealth/etc/ && \
