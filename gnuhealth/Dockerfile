@@ -6,7 +6,7 @@
 #FROM python:3.11.8-bookworm
 FROM python:3.11.9
 
-RUN apt-get update && apt-get install -y postgresql-client wget && \
+RUN apt-get update && apt-get install -y postgresql-client wget npm grunt && \
   cd /tmp/ && wget https://www.gnuhealth.org/downloads/postgres_dumps/gnuhealth-44-demo.sql.gz && \
   gunzip gnuhealth-44-demo.sql.gz
 
@@ -27,5 +27,19 @@ COPY ./banner.txt /tmp/banner.txt
 
 RUN chmod +x /scripts/init_and_run.sh
 RUN chmod +x /scripts/init
+
+RUN groupadd --gid 1000 node \
+    && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
+
+USER node
+COPY --chown=node:node ./sao-6.0 /usr/local/src/sao
+WORKDIR /usr/local/src/sao
+RUN npm install --legacy-peer-deps
+RUN grunt dev
+USER root
+##RUN npm i tryton-sao
+COPY ./modify_trytondconf.sh /tmp/modify_trytondconf.sh
+RUN chmod +x /tmp/modify_trytondconf.sh
+RUN /tmp/modify_trytondconf.sh
 
 ENTRYPOINT ["/scripts/init_and_run.sh"]
